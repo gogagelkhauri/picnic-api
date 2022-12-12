@@ -16,14 +16,6 @@ app.use(
 );
 
 
-
-app.use(express.static(__dirname));
-
-app.get("/*", function(req, res) {
-  res.sendFile(path.join(__dirname, "index.html"));
-});
-
-
 // Add headers before the routes are defined
 app.use(function (req, res, next) {
 
