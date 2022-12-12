@@ -15,6 +15,15 @@ app.use(
   })
 );
 
+
+if (process.env.NODE_ENV === 'PROD') {
+  const { resolve } = require('path')
+  app.use(express.static(resolve(__dirname, '..', 'dist')))
+  app.get('*', (req, res) => {
+  res.sendFile(resolve(__dirname, '..', 'dist', 'index.html'))
+  })
+}
+
 // Add headers before the routes are defined
 app.use(function (req, res, next) {
 
